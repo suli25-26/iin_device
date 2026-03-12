@@ -1,0 +1,32 @@
+<h1>Városok</h1>
+
+<label for="identifierFilter">Szűrés azonosítóra</label>
+<input type="text"
+placeholder="Azonosító"
+[formControl]="identifierFilter"
+id="identifierFilter"
+class="form-control mb-3"
+>
+
+<table class="table table-striped table-success">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Azonosító</th>
+            <th>Energiaigény</th>
+            <th>Állapot</th>
+            <th>Helyszín</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(city of cityList | cityfilter: identifierFilter.value ; track city.id) {
+            <tr>
+                <td>{{city.id}}</td>
+                <td>{{city.identifier}}</td>
+                <td>{{city.energyDemand}}</td>
+                <td>{{city.status}}</td>
+                <td>{{city.location}}</td>
+            </tr>
+        }
+    </tbody>
+</table>
